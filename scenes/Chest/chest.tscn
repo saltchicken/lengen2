@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtf7kasrl7vba"]
+
+[ext_resource type="Texture2D" uid="uid://b73m8f84jxyvx" path="res://assets/chest.png" id="1_8hhh7"]
+[ext_resource type="Script" path="res://scenes/Chest/Scripts/chest.gd" id="1_p1sne"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw7ie"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(28, 0, 26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da5qk"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(106, 35, 26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qgp2"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(2, 0, 26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r661"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(2, 0, 26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58j56"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(2, 0, 26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaics"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(106, 35, 26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ricsd"]
+atlas = ExtResource("1_8hhh7")
+region = Rect2(28, 0, 26, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsnwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw7ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da5qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qgp2")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r661")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58j56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaics")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ricsd")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4efar"]
+size = Vector2(20, 15)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_p1sne")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fsnwr")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_4efar")
